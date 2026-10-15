@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Калькулятор стоимости заказа — КубГУ</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-container header-inner">
+            <img
+                src="images/logo.png"
+                alt="Логотип Кубанского государственного университета"
+                class="logo"
+            >
+
+            <h1>Кубанский государственный университет</h1>
+        </div>
+    </header>
+
+    <nav class="site-nav" aria-label="Основная навигация">
+        <div class="site-container nav-inner">
+            <a href="#top">Главная</a>
+            <a href="#calculator">Калькулятор</a>
+            <a href="#instructions">Как пользоваться</a>
+        </div>
+    </nav>
+
+    <main class="site-container main-content" id="top">
+
+        <section
+            class="content-section"
+            id="calculator"
+            aria-labelledby="calculator-title"
+        >
+            <h2 id="calculator-title">
+                Калькулятор стоимости заказа
+            </h2>
+
+            <p class="intro">
+                Выберите товар, укажите количество и при
+                необходимости дополнительные параметры. Стоимость
+                пересчитывается автоматически.
+            </p>
+
+            <form id="order-form" novalidate>
+                <div class="form-field">
+                    <label for="quantity">
+                        Количество товара:
+                    </label>
+
+                    <input
+                        type="text"
+                        id="quantity"
+                        name="quantity"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        placeholder="Например, 3"
+                        value="1"
+                        aria-describedby="quantity-hint quantity-error"
+                        required
+                    >
+
+                    <p class="field-hint" id="quantity-hint">
+                        Введите целое положительное число,
+                        например 3.
+                    </p>
+
+                    <p
+                        class="error-message"
+                        id="quantity-error"
+                        role="alert"
+                        hidden
+                    ></p>
+                </div>
+
+                <fieldset class="form-field">
+                    <legend>Товар:</legend>
+
+                    <div class="radio-row">
+                        <input
+                            type="radio"
+                            id="product-pen"
+                            name="product"
+                            value="pen"
+                            data-price="60"
+                            checked
+                        >
+                        <label for="product-pen">Ручка — 60 ₽</label>
+                    </div>
+
+                    <div class="radio-row">
+                        <input
+                            type="radio"
+                            id="product-notebook"
+                            name="product"
+                            value="notebook"
+                            data-price="120"
+                        >
+                        <label for="product-notebook">
+                            Тетрадь — 120 ₽
+                        </label>
+                    </div>
+
+                    <div class="radio-row">
+                        <input
+                            type="radio"
+                            id="product-folder"
+                            name="product"
+                            value="folder"
+                            data-price="180"
+                        >
+                        <label for="product-folder">
+                            Папка — 180 ₽
+                        </label>
+                    </div>
+
+                    <div class="radio-row">
+                        <input
+                            type="radio"
+                            id="product-marker"
+                            name="product"
+                            value="marker"
+                            data-price="95"
+                        >
+                        <label for="product-marker">
+                            Маркер — 95 ₽
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="form-field" id="option-field" hidden>
+                    <label for="option">Количество листов:</label>
+
+                    <select id="option" name="option">
+                        <option value="12" data-price="0">
+                            12 листов — +0 ₽
+                        </option>
+                        <option value="48" data-price="40">
+                            48 листов — +40 ₽
+                        </option>
+                        <option value="96" data-price="90">
+                            96 листов — +90 ₽
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-field" id="property-field" hidden>
+                    <div class="checkbox-row">
+                        <input
+                            type="checkbox"
+                            id="property"
+                            name="property"
+                            data-price="30"
+                        >
+                        <label for="property">
+                            С кнопкой-застёжкой — +30 ₽
+                        </label>
+                    </div>
+                </div>
+
+                <div
+                    class="result"
+                    id="result"
+                    aria-live="polite"
+                >
+                    <p id="result-text"></p>
+                </div>
+            </form>
+        </section>
+
+        <section
+            class="content-section instructions"
+            id="instructions"
+        >
+            <h2>Как пользоваться калькулятором</h2>
+
+            <ol>
+                <li>Введите количество товара цифрами.</li>
+                <li>Выберите товар.</li>
+                <li>
+                    Для тетради выберите количество листов, для
+                    папки — отметьте «С кнопкой-застёжкой».
+                </li>
+                <li>
+                    Итоговая стоимость обновляется сразу, кнопок
+                    нажимать не нужно.
+                </li>
+            </ol>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-container">
+            <p>© Кубанский государственный университет</p>
+        </div>
+    </footer>
+</body>
+</html>
